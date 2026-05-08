@@ -6,8 +6,10 @@ const incomeEl = document.getElementById("income");
 const expenseEl = document.getElementById("expense");
 const transactionsList = document.getElementById("transactions");
 
-// show Transactions Array
-let transactions = [];
+
+// to  From Local Storage
+let transactions =
+  JSON.parse(localStorage.getItem("transactions")) || [];
 
 //to make and implement in transaction 
 
@@ -29,11 +31,22 @@ function addTransaction(e){
   };
 
   transactions.push(transaction);
+  updateLocalStorage();
   renderTransactions();
   form.reset();
 }
 
-form.addEventListener("submit", addTransaction);
+
+//remove transaction in array and ui
+
+function deleteTransaction(id){
+
+  transactions = transactions.filter(
+    transaction => transaction.id !== id
+  );
+  updateLocalStorage();
+  renderTransactions();
+}
 
 // to dynamic transaction rendering function
 function renderTransactions(){
@@ -94,13 +107,21 @@ function updateSummary(){
   expenseEl.innerText = `₹${Math.abs(expense).toFixed(2)}`;
 }
 
-//remove transaction in array and ui
+// Save To Local Storage
+function updateLocalStorage() {
 
-function deleteTransaction(id){
-
-  transactions = transactions.filter(
-    transaction => transaction.id !== id
+  localStorage.setItem(
+    "transactions",
+    JSON.stringify(transactions)
   );
-
-  renderTransactions();
 }
+
+// Event Listener
+form.addEventListener(
+  "submit",
+  addTransaction
+);
+
+renderTransactions();
+
+
