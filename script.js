@@ -1,18 +1,12 @@
 const form = document.getElementById("form");
 const textInput = document.getElementById("text");
-const incomeAmountInput =
-document.getElementById("incomeAmount");
-
-const expenseAmountInput =
-document.getElementById("expenseAmount");
+const incomeAmountInput =document.getElementById("incomeAmount");
+const expenseAmountInput =document.getElementById("expenseAmount");
 const balanceEl = document.getElementById("balance");
 const incomeEl = document.getElementById("income");
 const expenseEl = document.getElementById("expense");
-const incomeTransactions =
-document.getElementById("incomeTransactions");
-
-const expenseTransactions =
-document.getElementById("expenseTransactions");
+const incomeTransactions =document.getElementById("incomeTransactions");
+const expenseTransactions =document.getElementById("expenseTransactions");
 const clearAllBtn =document.getElementById("clearAll");
 
 // to  From Local Storage
@@ -22,14 +16,10 @@ let transactions =
 //to make and implement in transaction 
 
 function addTransaction(e){
-
   e.preventDefault();
   const text = textInput.value.trim();
-  const incomeAmount =
-Number(incomeAmountInput.value);
-
-const expenseAmount =
-Number(expenseAmountInput.value);
+  const incomeAmount =Number(incomeAmountInput.value);
+  const expenseAmount =Number(expenseAmountInput.value);
 
 if(
 
@@ -84,9 +74,7 @@ clearAllBtn.addEventListener("click", () => {
   if(confirmDelete){
 
     transactions = [];
-
     updateLocalStorage();
-
     renderTransactions();
   }
 
