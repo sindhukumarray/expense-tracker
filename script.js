@@ -1,10 +1,18 @@
 const form = document.getElementById("form");
 const textInput = document.getElementById("text");
-const amountInput = document.getElementById("amount");
+const incomeAmountInput =
+document.getElementById("incomeAmount");
+
+const expenseAmountInput =
+document.getElementById("expenseAmount");
 const balanceEl = document.getElementById("balance");
 const incomeEl = document.getElementById("income");
 const expenseEl = document.getElementById("expense");
-const transactionsList = document.getElementById("transactions");
+const incomeTransactions =
+document.getElementById("incomeTransactions");
+
+const expenseTransactions =
+document.getElementById("expenseTransactions");
 const clearAllBtn =document.getElementById("clearAll");
 
 // to  From Local Storage
@@ -17,18 +25,38 @@ function addTransaction(e){
 
   e.preventDefault();
   const text = textInput.value.trim();
-  const amount = Number(amountInput.value);
+  const incomeAmount =
+Number(incomeAmountInput.value);
 
-  if(text === "" || amount === 0){
-    alert("Please enter valid data");
-    return;
-  }
+const expenseAmount =
+Number(expenseAmountInput.value);
 
-  const transaction = {
-    id: Date.now(),
-    text,
-    amount
-  };
+if(
+
+  text === "" ||
+
+  (
+    incomeAmount === 0 &&
+    expenseAmount === 0
+  )
+
+){
+  alert("Please enter valid data");
+
+  return;
+}
+
+ const transaction = {
+
+  id: Date.now(),
+
+  text,
+
+  amount:
+    incomeAmount > 0
+    ? incomeAmount
+    : -expenseAmount
+};
 
   transactions.push(transaction);
   updateLocalStorage();
@@ -67,50 +95,75 @@ clearAllBtn.addEventListener("click", () => {
 // to dynamic transaction rendering function
 function renderTransactions(){
 
-  transactionsList.innerHTML = "";
+  incomeTransactions.innerHTML = "";
+
+  expenseTransactions.innerHTML = "";
+
   transactions.forEach(transaction => {
+
     const li = document.createElement("li");
 
     li.classList.add(
-      transaction.amount > 0 ? "income" : "expense"
+
+      transaction.amount > 0
+      ? "income"
+      : "expense"
+
     );
 
-  li.innerHTML = `
+    li.innerHTML = `
 
-  <div class="transaction-left">
+      <div class="transaction-left">
 
-    <h3>
-      ${transaction.text}
-    </h3>
+        <h3>
+          ${transaction.text}
+        </h3>
 
-  </div>
+      </div>
 
-  <div class="transaction-right">
+      <div class="transaction-right">
 
-    <span class="
-      amount
-      ${transaction.amount > 0 ? "plus" : "minus"}
-    ">
+        <span class="
+          amount
+          ${transaction.amount > 0
+          ? "plus"
+          : "minus"}
+        ">
 
-      ${transaction.amount > 0 ? "+" : "-"}
+          ${transaction.amount > 0 ? "+" : "-"}
 
-      ₹${Math.abs(transaction.amount)}
+          ₹${Math.abs(transaction.amount)}
 
-    </span>
+        </span>
 
-    <button
-      class="delete-btn"
-      onclick="deleteTransaction(${transaction.id})"
-    >
-      X
-    </button>
+        <button
+          class="delete-btn"
+          onclick="deleteTransaction(${transaction.id})"
+        >
+          X
+        </button>
 
-  </div>
+      </div>
 
-`;
+    `;
 
-    transactionsList.appendChild(li);
+    // income
+
+    if(transaction.amount > 0){
+
+      incomeTransactions.appendChild(li);
+
+    }
+
+    // expense
+
+    else{
+
+      expenseTransactions.appendChild(li);
+    }
+
   });
+
   updateSummary();
 }
 

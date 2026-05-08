@@ -192,11 +192,14 @@ button:hover{
   font-weight:700;
 }
 
-#transactions{
+#incomeTransactions,
+#expenseTransactions{
   list-style:none;
 }
 
-#transactions li{
+#incomeTransactions li,
+#expenseTransactions li{
+
   background:#f8fafc;
   padding:18px 22px;
   margin-bottom:18px;
@@ -215,10 +218,6 @@ button:hover{
   border-left:6px solid #ef4444;
 }
 
-.amount{
-  font-size:24px;
-  font-weight:700;
-}
 
 .plus{
   color:#10b981;
@@ -233,22 +232,16 @@ button:hover{
   height:44px !important;
 
   min-width:44px;
-
   display:flex;
   justify-content:center;
   align-items:center;
-
   border:none;
   border-radius:12px;
-
   background:#ef4444;
   color:white;
-
   cursor:pointer;
-
   font-size:18px;
   font-weight:bold;
-
   flex-shrink:0;
 }
 
@@ -298,3 +291,4 @@ button:hover{
   }
 
 }
+
