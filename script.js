@@ -67,3 +67,29 @@ function renderTransactions(){
   });
   updateSummary();
 }
+
+//update balance ,income, expense
+
+function updateSummary(){
+
+  const amounts = transactions.map(
+    transaction => transaction.amount
+  );
+
+  const total = amounts
+    .reduce((acc, item) => acc + item, 0);
+
+  const income = amounts
+    .filter(item => item > 0)
+    .reduce((acc, item) => acc + item, 0);
+
+  const expense = amounts
+    .filter(item => item < 0)
+    .reduce((acc, item) => acc + item, 0);
+
+  balanceEl.innerText = `₹${total.toFixed(2)}`;
+
+  incomeEl.innerText = `₹${income.toFixed(2)}`;
+
+  expenseEl.innerText = `₹${Math.abs(expense).toFixed(2)}`;
+}
