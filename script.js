@@ -45,7 +45,8 @@ if(
   amount:
     incomeAmount > 0
     ? incomeAmount
-    : -expenseAmount
+    : -expenseAmount,
+  date: new Date().toLocaleString()
 };
 
   transactions.push(transaction);
@@ -100,9 +101,17 @@ function renderTransactions(){
 
       <div class="transaction-left">
 
-        <h3>
-          ${transaction.text}
-        </h3>
+<div>
+
+  <h3>
+    ${transaction.text}
+  </h3>
+
+  <p class="transaction-date">
+    ${transaction.date}
+  </p>
+
+</div>
 
       </div>
 

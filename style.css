@@ -331,3 +331,9 @@ button:hover{
   font-size:18px;
   padding:12 0;
 }
+
+.transaction-date{
+  font-size:14px;
+  color:#64748b;
+  margin-top:6px;
+}
