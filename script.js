@@ -5,7 +5,7 @@ const balanceEl = document.getElementById("balance");
 const incomeEl = document.getElementById("income");
 const expenseEl = document.getElementById("expense");
 const transactionsList = document.getElementById("transactions");
-
+const clearAllBtn =document.getElementById("clearAll");
 
 // to  From Local Storage
 let transactions =
@@ -48,6 +48,22 @@ function deleteTransaction(id){
   renderTransactions();
 }
 
+clearAllBtn.addEventListener("click", () => {
+
+  const confirmDelete =
+    confirm("Delete all transactions?");
+
+  if(confirmDelete){
+
+    transactions = [];
+
+    updateLocalStorage();
+
+    renderTransactions();
+  }
+
+});
+
 // to dynamic transaction rendering function
 function renderTransactions(){
 
@@ -59,22 +75,33 @@ function renderTransactions(){
       transaction.amount > 0 ? "income" : "expense"
     );
 
-    li.innerHTML = `
-      <span>
-        ${transaction.text}
-      </span>
+   li.innerHTML = `
 
-      <div>
-        ₹${Math.abs(transaction.amount)}
+  <div>
 
-        <button
-          class="delete-btn"
-          onclick="deleteTransaction(${transaction.id})"
-        >
-          X
-        </button>
-      </div>
-    `;
+    <h3>
+      ${transaction.text}
+    </h3>
+
+  </div>
+
+  <div>
+
+    <strong>
+      ${transaction.amount > 0 ? "+" : "-"}
+      ₹${Math.abs(transaction.amount)}
+    </strong>
+
+    <button
+      class="delete-btn"
+      onclick="deleteTransaction(${transaction.id})"
+    >
+      X
+    </button>
+
+  </div>
+
+`;
 
     transactionsList.appendChild(li);
   });
