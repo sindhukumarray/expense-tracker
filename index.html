@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Expense Tracker</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div class="container">
+    <h1>Expense Tracker</h1>
+
+    <!-- to Summary Section -->
+    <div class="summary">
+
+      <div class="card">
+        <h3>Balance</h3>
+        <p id="balance">₹0.00</p>
+      </div>
+
+      <div class="card income-card">
+        <h3>Income</h3>
+        <p id="income">₹0.00</p>
+      </div>
+
+      <div class="card expense-card">
+        <h3>Expense</h3>
+        <p id="expense">₹0.00</p>
+      </div>
+
+    </div>
+
+    <!--to  Transaction Form -->
+    <form id="form">
+
+      <input
+        type="text"
+        id="text"
+        placeholder="Enter description"
+        required
+      >
+
+      <input
+        type="number"
+        id="amount"
+        placeholder="Enter amount (+ income / - expense)"
+        required
+      >
+
+      <button type="submit">
+        Add Transaction
+      </button>
+
+    </form>
+
+    <!-- to Transaction List -->
+    <ul id="transactions"></ul>
+
+  </div>
+  <script src="script.js"></script>
+
+</body>
+</html>
