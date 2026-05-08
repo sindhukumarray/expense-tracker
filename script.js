@@ -96,11 +96,8 @@ clearAllBtn.addEventListener("click", () => {
 function renderTransactions(){
 
   incomeTransactions.innerHTML = "";
-
   expenseTransactions.innerHTML = "";
-
   transactions.forEach(transaction => {
-
     const li = document.createElement("li");
 
     li.classList.add(
@@ -163,6 +160,24 @@ function renderTransactions(){
     }
 
   });
+
+  if(incomeTransactions.innerHTML === ""){
+
+  incomeTransactions.innerHTML = `
+    <p class="empty-msg">
+      start by adding your first income
+    </p>
+  `;
+}
+
+if(expenseTransactions.innerHTML === ""){
+
+  expenseTransactions.innerHTML = `
+    <p class="empty-msg">
+      Start by adding your first expense
+    </p>
+  `;
+}
 
   updateSummary();
 }

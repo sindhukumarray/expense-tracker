@@ -292,3 +292,10 @@ button:hover{
 
 }
 
+.empty-msg{
+
+  text-align:center;
+  color:#7ca4e0;
+  font-size:18px;
+  padding:12 0;
+}
