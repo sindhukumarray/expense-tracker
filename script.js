@@ -75,9 +75,9 @@ function renderTransactions(){
       transaction.amount > 0 ? "income" : "expense"
     );
 
-   li.innerHTML = `
+  li.innerHTML = `
 
-  <div>
+  <div class="transaction-left">
 
     <h3>
       ${transaction.text}
@@ -85,12 +85,18 @@ function renderTransactions(){
 
   </div>
 
-  <div>
+  <div class="transaction-right">
 
-    <strong>
+    <span class="
+      amount
+      ${transaction.amount > 0 ? "plus" : "minus"}
+    ">
+
       ${transaction.amount > 0 ? "+" : "-"}
+
       ₹${Math.abs(transaction.amount)}
-    </strong>
+
+    </span>
 
     <button
       class="delete-btn"
