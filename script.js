@@ -93,3 +93,14 @@ function updateSummary(){
 
   expenseEl.innerText = `₹${Math.abs(expense).toFixed(2)}`;
 }
+
+//remove transaction in array and ui
+
+function deleteTransaction(id){
+
+  transactions = transactions.filter(
+    transaction => transaction.id !== id
+  );
+
+  renderTransactions();
+}
