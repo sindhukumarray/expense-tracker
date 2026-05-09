@@ -8,7 +8,7 @@ const expenseEl = document.getElementById("expense");
 const incomeTransactions =document.getElementById("incomeTransactions");
 const expenseTransactions =document.getElementById("expenseTransactions");
 const clearAllBtn =document.getElementById("clearAll");
-
+const expenseTextInput =document.getElementById("expenseText");
 // to  From Local Storage
 let transactions =
   JSON.parse(localStorage.getItem("transactions")) || [];
@@ -16,8 +16,10 @@ let transactions =
 //to make and implement in transaction 
 
 function addTransaction(e){
-  e.preventDefault();
-  const text = textInput.value.trim();
+e.preventDefault();
+const incomeText =textInput.value.trim();
+
+const expenseText =expenseTextInput.value.trim();
   const incomeAmount =Number(incomeAmountInput.value);
   const expenseAmount =Number(expenseAmountInput.value);
 
@@ -32,15 +34,16 @@ if(
 
 ){
   alert("Please enter valid data");
-
   return;
 }
 
  const transaction = {
-
   id: Date.now(),
 
-  text,
+ text:
+incomeAmount > 0
+? incomeText
+: expenseText,
 
   amount:
     incomeAmount > 0
