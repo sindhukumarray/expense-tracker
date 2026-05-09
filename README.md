@@ -98,7 +98,7 @@ The project includes:
 Sindhu Kumar Ray
 
 * GitHub: [https://github.com/sindhukumarray](https://github.com/sindhukumarray)
-* LinkedIn: [https://www.linkedin.com/](https://www.linkedin.com/)
+* LinkedIn: [LinkedIn Post](https://www.linkedin.com/posts/sindhu-kumar-ray-456b8a392_javascript-frontenddevelopment-webdevelopment-activity-7458738714479992834-NEmd)
 
 ---
 
